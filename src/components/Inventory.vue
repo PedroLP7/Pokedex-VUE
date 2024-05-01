@@ -58,10 +58,10 @@ export default {
         },
         methods: {
             changeOneItem() {
-      // Aquí vamos a cambiar, por ejemplo, la cantidad del item con ID 1
+      
       const item = this.items1.find(i => i.id === 1);
       if (item) {
-        item.quantity += 5; // Aumentamos la cantidad en 5
+        item.quantity += 5;
       }
     },
 
