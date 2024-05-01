@@ -1,8 +1,14 @@
 <template>
     <div>
       <h1 class="text-center">Pokedex</h1>
+      
+        
   
       <div class="container"id="pokedex">
+        <button class="btn m-1 ml-3" v-for="type in typeName" :style="{ backgroundColor: getColor(type)}  " > 
+            {{ type.toUpperCase() }}
+        </button>
+        <button class="btn btn-light">Favourite</button>
         <div class="row mt-3">
           
          
@@ -38,7 +44,9 @@ export default {
         return {
             pokemons: []
             ,
-            likedPokes: []
+            likedPokes: [],
+            typeName: ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy']
+
             
         }
     },
@@ -47,7 +55,7 @@ export default {
         getPokemons() {
             const me = this;
 
-            const lastPoke = 151;
+            const lastPoke = 10;
             const firstPoke = 1;
 
             for (let i = firstPoke; i <= lastPoke; i++) {
