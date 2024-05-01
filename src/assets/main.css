@@ -1,0 +1,24 @@
+@import './base.css';
+
+:root{
+  --Grass : #4CAF50;
+  --Fire : #F44336;
+  --Water : #2196F3;
+  --Bug : #CDDC39;
+  --Normal : #9E9E9E;
+  --Poison : #9C27B0;
+  --Electric : #FFEB3B;
+  --Ground : #795548;
+  --Fairy : #E91E63;
+  --Fighting : #FF5722;
+  --Psychic : #673AB7;
+  --Rock : #607D8B;
+  --Ghost : #9C27B0;
+  --Ice : #03A9F4;
+  --Dragon : #3F51B5;
+  --Dark : #212121;
+  --Steel : #607D8B;  
+  --Flying : #03A9F4;
+
+
+}
