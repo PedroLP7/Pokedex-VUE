@@ -3,6 +3,7 @@
     <Inventory />
     <Favourites :likedPokes="likedPokes" />
     <Pokedex @likedPokes="updateLikedPokes"  />
+  
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import Favourites from './components/Favourites.vue';
 import Inventory from './components/Inventory.vue';
 
 
+
 </script>
 
 <script>
@@ -21,6 +23,7 @@ export default {
     Pokedex,
     Favourites,
     Inventory,
+ 
   }, 
   data() {
     return {

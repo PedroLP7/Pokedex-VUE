@@ -1,7 +1,7 @@
 <template >
     <div>
 
-        AQUI LA TIENDA 
+        <h1 class="text-right"> Shop</h1>
         
     </div>
 </template>
