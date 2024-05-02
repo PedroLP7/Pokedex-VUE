@@ -15,7 +15,7 @@
         </div>
 
 
-        <button class="btn btn-warning">Comprar</button>
+        <button class="btn btn-warning" @click="BuyItems()">Comprar</button>
         
     
        
@@ -37,10 +37,14 @@
 import axios from 'axios'
 export default {
     name : 'Shop',
+    emits: ['buy'],
 
     data() {
         return {
             shopItems: [],
+            
+            
+            
            
             
         }
@@ -73,6 +77,20 @@ export default {
            item.desiredQuantity++
 
             
+        },
+        BuyItems(){
+            this.shopItems.forEach(item => {
+                item.quantity -= item.desiredQuantity
+                this.$emit('buy', { id: item.id, desiredQuantity: item.desiredQuantity }); 
+                console.log( 'id '+item.id +' quantity  ' +item.desiredQuantity)
+                item.desiredQuantity = 0
+                
+                
+              
+               
+                
+            })
+           
         }
         
     },

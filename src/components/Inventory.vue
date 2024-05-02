@@ -31,7 +31,7 @@
 
 
     
-        <Shop />
+        <Shop @buy="updateItems" />
         
 
 
@@ -64,6 +64,16 @@ export default {
         item.quantity += 5;
       }
     },
+    updateItems(data) {
+    if (data) {
+        const { id, desiredQuantity } = data;
+        const itemToUpdate = this.items1.find(item => item.id === id);
+        if (itemToUpdate) {
+            itemToUpdate.quantity += desiredQuantity;
+        }
+    }
+}
+,
 
 
         getItems() {
@@ -78,6 +88,8 @@ export default {
                         if(desiredItems.includes(i)){
                             response.data.quantity = 0
                             this.items1.push(response.data)
+                            // console.log(response.data.id)
+                            
                         }
                        
 
@@ -92,9 +104,19 @@ export default {
 
     
             
-         }
+         },
+         
+},
+
+
+
+
+              
+            
+              
+            
         
-    },
+    
 
     data() {
         return {
