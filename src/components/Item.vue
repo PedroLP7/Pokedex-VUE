@@ -1,9 +1,13 @@
 <template>
-    <div class="item">
+
+    <div class="card icard m-3">
         <h3>{{ item.name }}</h3>
-        <img :src="item.sprites.default" alt="Item image">
+        <img  id="itemimg" :src="item.sprites.default" alt="Item image">
         <p>Quantity: {{ item.quantity }}</p>
+
     </div>
+
+   
 </template>
 
 <script>
@@ -19,5 +23,13 @@ export default {
 </script>
 
 <style>
-    /* Agrega estilos si es necesario */
+    #itemimg{
+        width:50px;
+        height: 50px;
+    }
+
+    .icard{
+       
+        width: 180px;
+    }
 </style>

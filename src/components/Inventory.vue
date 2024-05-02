@@ -1,6 +1,6 @@
 <template >
     <div>
-       <h1 class="text-left">MY INVENTORY</h1>
+       <h1 class="text-center">MY INVENTORY</h1>
 
         <div class="container">
             <div class="row ">
@@ -11,7 +11,7 @@
              
                 <Item v-for="(item, index) in items1" :key="index" :item="item" />
 
-                <button @click="changeOneItem">Prueba</button>
+                <!-- <button @click="changeOneItem">Prueba</button> -->
 
 
                 <!-- <div v-for="item in items1">
