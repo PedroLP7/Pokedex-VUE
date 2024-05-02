@@ -11,7 +11,7 @@
             <h3>{{ item.name }}</h3>
         <img  id="itemimg" :src="item.sprites.default" alt="Item image">
         <p>Quantity: {{ item.quantity }}</p>
-        <button class="btn  btn-primary "@click="desiredPlus(item)">+</button> <p class="mt-2">{{ item.desiredQuantity}}</p> <button class="btn btn-danger">-</button>
+        <button class="btn  btn-primary "@click="desiredPlus(item)">+</button> <p class="mt-2">{{ item.desiredQuantity}}</p> <button  @click="desiredLess(item)" class="btn btn-danger">-</button>
         </div>
 
 
@@ -77,6 +77,14 @@ export default {
            item.desiredQuantity++
 
             
+        },
+        desiredLess(item){
+            if(item.desiredQuantity > 0){
+                item.desiredQuantity--
+            }
+            
+        
+    
         },
         BuyItems(){
             this.shopItems.forEach(item => {
