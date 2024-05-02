@@ -25,7 +25,7 @@
                 <p class="card-text">Pokedex Number: {{ pokemon.id }}</p>
                 <p class="card-text">Height: {{ pokemon.height }}</p>
                 <p class="card-text">Weight: {{ pokemon.weight }}</p>
-                <p class="card-text">Types:
+                <p class="card-text ">Types:
                   <span class="capitalize" :style="{ backgroundColor: getColor(type.type.name)}  " v-for="(type, index) in pokemon.types" :key="index">
                     {{ type.type.name }}&nbsp;
                   </span>
