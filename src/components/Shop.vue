@@ -8,7 +8,7 @@
     <div class="row">
 
         <div class="card card-blue m-3" v-for="(item,index) in shopItems" :key="index">
-            <h3>{{ item.name }}</h3>
+            <h3>{{ item.name.replace("-"," ") }}</h3>
         <img  id="itemimg" :src="item.sprites.default" alt="Item image">
         <p>Quantity: {{ item.quantity }}</p>
         <button class="btn  btn-primary "@click="desiredPlus(item)">+</button> <p class="mt-2">{{ item.desiredQuantity}}</p> <button  @click="desiredLess(item)" class="btn btn-danger">-</button>

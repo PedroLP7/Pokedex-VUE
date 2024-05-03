@@ -1,9 +1,11 @@
 <template>
 
-    <div class="card icard m-3">
-        <h3>{{ item.name }}</h3>
-        <img  id="itemimg" :src="item.sprites.default" alt="Item image">
-        <p>Quantity: {{ item.quantity }}</p>
+    <div class="card icard m-3 align-items-center">
+        <h3>{{ item.name.replace("-"," ") }}</h3>
+        <img  id="itemimg" class="" :src="item.sprites.default" alt="Item image">
+        <!-- <p>Quantity: {{ item.quantity }}</p> -->
+        <!-- <div v-if="item.quantity==item.maxQuantity"> ESTA AL MAXIMO</div> -->
+        <p class="text-center">{{ item.quantity }}/{{ item.maxQuantity }}</p>
 
     </div>
 
@@ -18,7 +20,15 @@ export default {
             type: Object,
             required: true
         }
-    }
+        
+    }, data() {
+        return {
+           
+            
+            
+        }
+    },
+   
 }
 </script>
 

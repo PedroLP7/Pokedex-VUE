@@ -56,9 +56,11 @@ export default {
     computed: {
         filteredPokemons(){
             if(this.selectedType){
+                console.log(this.selectedType)
                 return this.pokemons.filter(pokemon => pokemon.types.some(type => type.type.name === this.selectedType))
             }else{
                 return this.pokemons
+                
             }
         }
     },
