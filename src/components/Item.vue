@@ -1,6 +1,6 @@
 <template>
 
-    <div class="card icard m-3 align-items-center">
+    <div class="card icard m-3 align-items-center" v-bind:class="{'Max' : item.quantity===item.maxQuantity} ">
         <h3>{{ item.name.replace("-"," ") }}</h3>
         <img  id="itemimg" class="" :src="item.sprites.default" alt="Item image">
         <!-- <p>Quantity: {{ item.quantity }}</p> -->
@@ -41,5 +41,8 @@ export default {
     .icard{
        
         width: 180px;
+    }
+    .Max{
+        background-color: red;
     }
 </style>
