@@ -5,19 +5,27 @@
         
   
       <div class="container"id="pokedex">
+        
         <button class="btn btn-light" @click="showAll()">Show all</button>
         <button class="btn m-1 ml-3" v-for="type in typeName" :style="{ backgroundColor: getColor(type)}  " @click="filterByType(type)" > 
             {{ type.toUpperCase() }}
         </button>
+        <button class="btn btn-light" @click="filterByTeam()" >Show team</button>
         
         
         <div class="row mt-3">
           
-         
+            
             <div class="card col-3 m-5 align-content-center " v-for="pokemon in filteredPokemons" :key="pokemon.id">
+                
+
                 <svg  @click="getLike(pokemon)"  class="like mt-3"xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
 		<path fill="#e0cccc" d="m47.6 300.4l180.7 168.7c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9l180.7-168.7c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141c-45.6-7.6-92 7.3-124.6 39.9l-12 12l-12-12c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5" />
 	</svg>
+    <input type="checkbox" class="btn-check teamcheck" :id="'btn-check-outlined-' + pokemon.id" v-model="pokemon.caught" @change="toggleCaught(pokemon)">
+            <label class="btn btn-outline-primary team" :for="'btn-check-outlined-' + pokemon.id">{{ pokemon.caught ? 'RELEASE' : 'CATCH' }}</label><br>
+   
+   
               <img :src="pokemon.sprites.front_default" class="card-img-top" alt="...">
               
               <div class="card-body">
@@ -49,24 +57,56 @@ export default {
             likedPokes: [],
             typeName: ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'],
             selectedType: null,
-            showFavComponent: false
+            showFavComponent: false,
+            pokemonTeam :[],
+            showTeam : false
             
         }
     },
     computed: {
         filteredPokemons(){
-            if(this.selectedType){
-                console.log(this.selectedType)
+            if (this.showTeam) {
+                return this.pokemons.filter(pokemon => pokemon.caught)
+            } else if (this.selectedType) {
                 return this.pokemons.filter(pokemon => pokemon.types.some(type => type.type.name === this.selectedType))
-            }else{
+            } else {
                 return this.pokemons
-                
             }
         }
     },
     methods: {
         showAll(){
+            this.showTeam = false;
             this.selectedType = null;
+        },
+        toggleCaught(pokemon) {
+
+            
+            if(pokemon.caught){
+                this.pokemonTeam.push(pokemon);
+                console.log('añadiendo a equipo a ' + pokemon.name);
+             }else{
+                this.pokemonTeam.splice(this.pokemonTeam.indexOf(pokemon), 1);
+                console.log('quitando de equipo a ' + pokemon.name);
+                
+            }
+            
+            
+
+
+           
+            //  pokemon.caught = true;
+
+            //  this.pokemonTeam.push(pokemon);
+            
+          
+             console.log(this.pokemonTeam);
+            
+
+        },
+        filterByTeam(){
+            this.showTeam = true;
+         this.selectedType = null;
         },
        
 
@@ -79,6 +119,7 @@ export default {
             for (let i = firstPoke; i <= lastPoke; i++) {
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
                     .then((response) => {
+                        response.data.caught = false;
                         me.pokemons.push(response.data)
 
 
@@ -94,6 +135,7 @@ export default {
         filterByType(type){
             console.log(type);
             this.selectedType = type;
+            this.showTeam = false;
         },
         getColor(typeName) {
     switch (typeName) {
@@ -237,6 +279,24 @@ export default {
     height: 45px;
     width: 50px;
 }
+
+.team-check {
+        /* Ajusta el tamaño del checkbox */
+        transform: scale(0.8);
+        margin-right: 2px; 
+    }
+
+    .team {
+        position: absolute ;
+        align-content: center;
+        top: 15px;
+        right: 15px;
+        width: 52px;
+        height: 40px;
+
+        font-size: 12px;
+        padding: 0.2rem 0.4rem; 
+    }
 
 
 
