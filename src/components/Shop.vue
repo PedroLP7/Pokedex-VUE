@@ -4,7 +4,7 @@
         <h1 class="text-center " id="title"> Shop</h1>
 
 
-<div class="container m-3">
+<div class="container m-4">
     <div class="row">
 
         <div class="card card-blue m-3" v-for="(item,index) in shopItems" :key="index">
