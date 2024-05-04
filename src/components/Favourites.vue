@@ -1,7 +1,8 @@
 <template >
     <div>   
         <h1 v-if="likedPokes" class="text-center">Favourites</h1>
-        <h1  v-if="likedPokes&&likedPokes.length==0">No favourites yet , select one </h1>
+        <h1  class="text-center" v-if="likedPokes&&likedPokes.length==0"> <br/>No favourites yet , select one </h1>
+        <br>
         <div class="container"id="favourites">
         <div class="row mt-3">
          

@@ -1,10 +1,10 @@
 <template >
     <div>
 
-        <h1 class="text-center"> Shop</h1>
+        <h1 class="text-center " id="title"> Shop</h1>
 
 
-<div class="container">
+<div class="container m-3">
     <div class="row">
 
         <div class="card card-blue m-3" v-for="(item,index) in shopItems" :key="index">
@@ -15,7 +15,7 @@
         </div>
 
 
-        <button class="btn btn-warning" @click="BuyItems()">Comprar</button>
+       
         
     
        
@@ -24,7 +24,7 @@
 
     </div>
 
-
+    <button class="btn btn-warning" @click="BuyItems()">Comprar</button>
 
 
 
@@ -109,7 +109,11 @@ export default {
     
 }
 </script>
-<style >
+<style scoped >
+
+#title{
+    color: #130901;
+}
 
 .card-blue{
     align-items: center;
