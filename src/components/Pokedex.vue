@@ -11,6 +11,8 @@
             {{ type.toUpperCase() }}
         </button>
         <button class="btn btn-light" @click="filterByTeam()" >Show team</button>
+
+        <Selector @filter-by-id="updateFilter" />
         
         
         <div class="row mt-3">
@@ -48,7 +50,12 @@
   
 <script>
 import axios from 'axios'
+import Selector from './Selector.vue'
+
 export default {
+    components: {
+        Selector
+    },
 
     data() {
         return {
@@ -59,7 +66,9 @@ export default {
             selectedType: null,
             showFavComponent: false,
             pokemonTeam :[],
-            showTeam : false
+            showTeam : false,
+            showNumbers: false,
+            idSearch: [],
             
         }
     },
@@ -69,7 +78,12 @@ export default {
                 return this.pokemons.filter(pokemon => pokemon.caught)
             } else if (this.selectedType) {
                 return this.pokemons.filter(pokemon => pokemon.types.some(type => type.type.name === this.selectedType))
-            } else {
+            } else if(this.showNumbers){
+                console.log(this.idSearch);
+               
+                return this.pokemons.filter(pokemon => pokemon.id >= this.idSearch[0] && pokemon.id <= this.idSearch[1]);                
+            }
+            else {
                 return this.pokemons
             }
         }
@@ -78,6 +92,19 @@ export default {
         showAll(){
             this.showTeam = false;
             this.selectedType = null;
+            this.showNumbers = false;
+        },
+        updateFilter(id){
+            
+            this.showNumbers = true;
+            // console.log(id);
+           let hola= id.split('-');
+            // console.log(hola);
+            this.idSearch = hola;
+           
+            console.log('updating filter...');
+            console.log(this.showNumbers);
+            // console.log(id);
         },
         toggleCaught(pokemon) {
 
@@ -107,6 +134,7 @@ export default {
         filterByTeam(){
             this.showTeam = true;
          this.selectedType = null;
+         this.showNumbers = false;
         },
        
 
@@ -136,6 +164,7 @@ export default {
             console.log(type);
             this.selectedType = type;
             this.showTeam = false;
+            this.showNumbers = false;
         },
         getColor(typeName) {
     switch (typeName) {
