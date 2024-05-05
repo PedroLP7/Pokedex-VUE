@@ -3,8 +3,8 @@
 
         <h4 class="text-center">SEARCH BY POKEDEX NUMBER</h4>
 
-    <select name="idSearch" id="idSearch" class="form-select" v-model="selectedId" @change="filterById()">
-        <option value="All">All</option>
+    <select name="idSearch" id="idSearch" class="form-select" v-model="selectedId" @change="filterById()">    
+        <option value="1-151">All</option>    
         
         <option value="1-20">1-20</option>
         <option value="21-40">21-40</option>
@@ -27,7 +27,7 @@ export default {
     name: 'Selector',
     data() {
         return {
-            selectedId:  "All",
+            selectedId:  "1-151",
            
             
         }
