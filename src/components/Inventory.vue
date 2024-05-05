@@ -15,7 +15,7 @@
         <div class="modal-content  " id="alert-danger-delete">
           <div class="modal-body">
             <Shop @buy="updateItems" />
-            a
+            
           </div>
           <div class="modal-footer" id="alert-danger-delete-footer">
             <button
