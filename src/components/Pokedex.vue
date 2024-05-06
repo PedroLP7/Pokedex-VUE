@@ -138,14 +138,14 @@ export default {
         },
        
 
-        getPokemons() {
+       async getPokemons() {
             const me = this;
 
             const lastPoke = 151;
             const firstPoke = 1;
 
             for (let i = firstPoke; i <= lastPoke; i++) {
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+               await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
                     .then((response) => {
                         response.data.caught = false;
                         me.pokemons.push(response.data)
